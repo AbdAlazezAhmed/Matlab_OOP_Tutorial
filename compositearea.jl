@@ -16,7 +16,7 @@ get_Iy(ca::AbstractCompositeArea) = sum(da.area_simple.Iy for da in ca.d_area_si
 get_Iz(ca::AbstractCompositeArea) = sum(da.area_simple.Iz for da in ca.d_area_simple)
 get_Iyz(ca::AbstractCompositeArea) = sum(da.area_simple.Iyz for da in ca.d_area_simple)
 
-abstract type AbstractCompositeAreaSymZ{T} <: AbstractCompositeArea end
+abstract type AbstractCompositeAreaSymZ <: AbstractCompositeArea end
 get_Iz(ca::AbstractCompositeAreaSymZ) = get_Iz_hat(ca) 
 function double_areas!(A::VecOrMat{T}, Iy::VecOrMat{T} ,Iz::VecOrMat{T} ,y::VecOrMat{T} ,Iyz::Union{VecOrMat{T}, Nothing} = nothing) where T
     A[y .== zero(T)] .*= 2
@@ -25,7 +25,7 @@ function double_areas!(A::VecOrMat{T}, Iy::VecOrMat{T} ,Iz::VecOrMat{T} ,y::VecO
     isnothing(Iyz) || Iyz[y .== zero(T)] .*= 2
     return nothing
 end
-get_Qz(::AbstractCompositeAreaSymZ{T}) where T = zero(T)
-get_y_bar(::AbstractCompositeAreaSymZ{T}) where T = zero(T)
-get_Iyz_bar(::AbstractCompositeAreaSymZ{T}) where T = zero(T)
-get_Iyz(::AbstractCompositeAreaSymZ{T}) where T = zero(T)
+get_Qz(::AbstractCompositeAreaSymZ)  = 0.0
+get_y_bar(::AbstractCompositeAreaSymZ)  = 0.0
+get_Iyz_bar(::AbstractCompositeAreaSymZ)  = 0.0
+get_Iyz(::AbstractCompositeAreaSymZ) = 0.0
