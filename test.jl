@@ -25,3 +25,11 @@ oDistantArea=DistantAreaSimple(1,2,3,4,5,6)
 
 isa(oDistantArea, AreaSimple)
 isa(oDistantArea, DistantAreaSimple)
+
+area_array = [AreaSimple(1,2,3,4) for _ in 1:5]
+A = [10, 20, 30, 40]
+Iy = [2, 5, 12, 6]
+Iz = [24, 563, 12 ,56]
+area_array2 = AreaSimple.(Iz, Iy, Iz)
+area_matrix = AreaSimple.(Iz, Iy, Iz')
+reshape(area_matrix,:)
